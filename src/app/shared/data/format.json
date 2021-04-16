@@ -1,0 +1,549 @@
+{
+  "title": "XYZ - QUESTIONNAIRE",
+  "introduction": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+  "questions": [{
+      "section": "A",
+      "title": "How are you?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Where are you from?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Wat is your favorite color?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "How old are you?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "What is your favorite sport?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Which school do you study at?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Where do you work?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        }
+      ]
+    },
+    {
+      "section": "B",
+      "title": "Which is your favorite subject?",
+      "type": "input"
+    },
+    {
+      "section": "B",
+      "title": "Where are you travelling this year?",
+      "type": "radio",
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        },
+        {
+          "title": "Grey"
+        },
+        {
+          "title": "White"
+        },
+        {
+          "title": "Gold"
+        },
+        {
+          "title": "Purple"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "How old are you?",
+      "type": "radio",
+      "options": [{
+          "title": "Red",
+          "colors": ["green"]
+        },
+        {
+          "title": "Blue",
+          "colors": ["grey"]
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Currently where do you live?",
+      "type": "radio",
+      "colors": ["green"],
+      "options": [{
+          "title": "Red",
+          "colors": ["lightblue"]
+        },
+        {
+          "title": "Blue",
+          "colors": ["lightblue"]
+        },
+        {
+          "title": "Pink",
+          "colors": ["lightblue"]
+        },
+        {
+          "title": "Yellow",
+          "colors": ["blue"]
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "How far do you work?",
+      "type": "radio",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Which sports team do you like?",
+      "type": "radio",
+      "colors": ["green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Approximately how much would it cost?",
+      "type": "radio",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Approximately how far is it?",
+      "type": "radio",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Which of the following is your favorite?",
+      "type": "radio",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        },
+        {
+          "title": "Grey"
+        },
+        {
+          "title": "White"
+        },
+        {
+          "title": "Gold"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Currently are you working with any company?",
+      "type": "radio",
+      "colors": ["grey", "green", "blue"],
+      "options": [{
+          "title": "Red",
+          "colors": ["green"]
+        },
+        {
+          "title": "Blue",
+          "colors": ["pink"]
+        },
+        {
+          "title": "Green",
+          "colors": ["pink"]
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Primarily what is your staple food?",
+      "type": "radio",
+      "colors": ["green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        },
+        {
+          "title": "Grey"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What is your favorite sport?",
+      "type": "radio",
+      "colors": ["green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "How long have you been here?",
+      "type": "radio",
+      "colors": ["green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "How old are you?",
+      "type": "radio",
+      "colors": ["green"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Why have you not visited the beach?",
+      "type": "radio",
+      "colors": ["lightblue", "pink"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What is your favorite movie?",
+      "type": "radio",
+      "colors": ["green", "pink"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What skills do you have?",
+      "type": "radio",
+      "colors": ["green", "pink"],
+      "options": [{
+          "title": "Red"
+        },
+        {
+          "title": "Blue"
+        },
+        {
+          "title": "Green"
+        },
+        {
+          "title": "Yellow"
+        },
+        {
+          "title": "Black"
+        },
+        {
+          "title": "Orange"
+        },
+        {
+          "title": "Pink"
+        },
+        {
+          "title": "Grey"
+        },
+        {
+          "title": "White"
+        }
+      ]
+    }
+  ]
+}
