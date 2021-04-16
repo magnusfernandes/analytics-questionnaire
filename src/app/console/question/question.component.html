@@ -1,22 +1,63 @@
-<div class="container-fluid mt-5" *ngIf="question">
-  <h2 class="fw-bold text-muted">SECTION {{question.section}}</h2>
-  <h4 class="mb-3">{{question.title}}</h4>
+<div class="container-fluid mt-5" *ngIf="question && formReady">
+  <h4 class="mb-5 display-3 fw-bold text-center">{{question.title}}</h4>
 
-  <ng-container [formGroup]="questionForm">
+  <div class="text-center mb-5" [formGroup]="questionForm">
     <ng-container *ngIf="question.type == 'radio'">
-      <div class="form-check" *ngFor="let option of question.options; let i = index">
-        <input class="form-check-input" type="radio" [id]="'option' + i" [value]="i" formControlName="question">
-        <label class="form-check-label" [for]="'option' + i">
-          {{option.title}}
-        </label>
+      <div class="btn-group-vertical">
+        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group"
+          *ngFor="let option of question.options; let i = index">
+          <input type="radio" class="btn-check" [id]="'option' + i" [value]="i" formControlName="radio"
+            autocomplete="off">
+          <label class="btn btn-outline-primary" [for]="'option' + i">{{option.title}}</label>
+        </div>
       </div>
     </ng-container>
-  </ng-container>
+
+    <ng-container *ngIf="question.type == 'input'">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-xl-4">
+          <input type="text" class="form-control" placeholder="Enter your response" formControlName="input">
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="btn-group-vertical" *ngIf="question.type == 'checkbox'">
+      <ng-container *ngFor="let control of checkboxes.controls; let i = index">
+        <div class="btn-group mb-3" role="group">
+          <input type="checkbox" class="btn-check" [id]="'control' + i" [value]="i" autocomplete="off"
+            [formControl]="control">
+          <label class="btn btn-outline-primary" [for]="'control' + i">{{question.options[i].title}}</label>
+        </div>
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="question.type == 'slider'">
+      <div class="row justify-content-center">
+        <div class="col-12 col-xl-10">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-6 mb-5" *ngFor="let option of question.options">
+                <div class="mb-5 px-5">
+                  <p class="text-muted">{{option.title}}</p>
+                  <ngx-slider formControlName="slider" [options]="option.config.options">
+                  </ngx-slider>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
 
 
   <hr class="mt-4 mb-4">
   <div class="d-flex justify-content-end">
-    <button class="btn btn-primary" (click)="continue()" [disabled]="questionForm.invalid">CONTINUE</button>
+    <button *ngIf="this.recordedAnswer" class="btn btn-outline-danger" (click)="continue()"
+      [disabled]="questionForm.invalid">SAVE</button>
+    <button *ngIf="!this.recordedAnswer" class="btn btn-outline-primary" (click)="continue()"
+      [disabled]="questionForm.invalid">SUBMIT</button>
   </div>
 
 </div>

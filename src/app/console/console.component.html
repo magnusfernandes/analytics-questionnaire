@@ -1,7 +1,7 @@
-<div class="h-100 d-flex flex-column" *ngIf="appData">
+<div class="h-100 d-flex flex-column main" *ngIf="appData">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">{{appData.heading}}</a>
+      <a class="navbar-brand" href="#"><span class="fw-bold">{{appData.heading}}</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,9 +14,16 @@
         <div class="list-group">
           <a routerLink="/question" [queryParams]="{index: i}" class="list-group-item list-group-item-action"
             *ngFor="let question of appData.questions; let i = index">
-            <div>
-              <p class="m-0 fw-bold">Section {{question.section}} Q.{{i+1}}</p>
-              <small class="text-muted">{{question.title}}</small>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <p class="m-0 fw-bold">Q.{{i+1}}&nbsp;&nbsp;&nbsp;<span class="badge bg-primary">Section
+                    {{question.section}}</span>
+                </p>
+                <small class="text-muted">{{question.title}}</small>
+              </div>
+              <span *ngIf="getResponse(i)" class="badge bg-success">
+                <fa-icon [icon]="faCheck"></fa-icon>
+              </span>
             </div>
           </a>
         </div>

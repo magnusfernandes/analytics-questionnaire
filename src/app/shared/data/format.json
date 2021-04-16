@@ -1,6 +1,7 @@
 {
   "heading": "Analytics Station",
   "title": "XYZ - QUESTIONNAIRE",
+  "version": 1,
   "introduction": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
   "questions": [{
       "section": "A",
@@ -37,7 +38,7 @@
     },
     {
       "section": "A",
-      "title": "Wat is your favorite color?",
+      "title": "What is your favorite color?",
       "type": "radio",
       "options": [{
           "title": "Red"
@@ -148,7 +149,7 @@
     {
       "section": "B",
       "title": "Where are you travelling this year?",
-      "type": "radio",
+      "type": "checkbox",
       "options": [{
           "title": "Red"
         },
@@ -265,10 +266,18 @@
     {
       "section": "C",
       "title": "Approximately how much would it cost?",
-      "type": "radio",
+      "type": "slider",
       "colors": ["grey", "green"],
+      "sliderTotal": 320,
       "options": [{
-          "title": "Red"
+          "title": "Red",
+          "config": {
+            "initialValue": 0,
+            "options": {
+              "floor": 0,
+              "ceil": 100
+            }
+          }
         },
         {
           "title": "Blue"
@@ -303,7 +312,7 @@
     {
       "section": "C",
       "title": "Which of the following is your favorite?",
-      "type": "radio",
+      "type": "checkbox",
       "colors": ["grey", "green"],
       "options": [{
           "title": "Red"
@@ -359,7 +368,7 @@
     {
       "section": "C",
       "title": "Primarily what is your staple food?",
-      "type": "radio",
+      "type": "checkbox",
       "colors": ["green"],
       "options": [{
           "title": "Red"
@@ -390,7 +399,7 @@
     {
       "section": "C",
       "title": "What is your favorite sport?",
-      "type": "radio",
+      "type": "checkbox",
       "colors": ["green"],
       "options": [{
           "title": "Red"
@@ -493,7 +502,7 @@
     {
       "section": "C",
       "title": "What is your favorite movie?",
-      "type": "radio",
+      "type": "checkbox",
       "colors": ["green", "pink"],
       "options": [{
           "title": "Red"
@@ -515,7 +524,7 @@
     {
       "section": "C",
       "title": "What skills do you have?",
-      "type": "radio",
+      "type": "checkbox",
       "colors": ["green", "pink"],
       "options": [{
           "title": "Red"
