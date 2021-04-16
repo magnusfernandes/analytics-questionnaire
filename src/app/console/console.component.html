@@ -11,22 +11,7 @@
   <div class="container-fluid">
     <div class="row h-100">
       <div class="col-4 col-md-4 col-xl-3 p-0">
-        <div class="list-group">
-          <a routerLink="/question" [queryParams]="{index: i}" class="list-group-item list-group-item-action"
-            *ngFor="let question of appData.questions; let i = index">
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <p class="m-0 fw-bold">Q.{{i+1}}&nbsp;&nbsp;&nbsp;<span class="badge bg-primary">Section
-                    {{question.section}}</span>
-                </p>
-                <small class="text-muted">{{question.title}}</small>
-              </div>
-              <span *ngIf="getResponse(i)" class="badge bg-success">
-                <fa-icon [icon]="faCheck"></fa-icon>
-              </span>
-            </div>
-          </a>
-        </div>
+        <app-question-list></app-question-list>
       </div>
       <div class="col-8 col-md-8 col-xl-9 bg-grey">
         <router-outlet></router-outlet>

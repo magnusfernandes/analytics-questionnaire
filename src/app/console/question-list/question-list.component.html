@@ -1,0 +1,17 @@
+<div class="list-group">
+  <ng-container *ngFor="let question of appData.questions; let i = index">
+    <a routerLink="/question" [queryParams]="{index: i}" class="list-group-item list-group-item-action">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <p class="m-0 fw-bold">Q.{{i+1}}&nbsp;&nbsp;&nbsp;<span class="badge bg-primary">Section
+              {{question.section}}</span>
+          </p>
+          <small class="text-muted">{{question.title}}</small>
+        </div>
+        <span *ngIf="getResponse(i)" class="badge bg-success">
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </span>
+      </div>
+    </a>
+  </ng-container>
+</div>

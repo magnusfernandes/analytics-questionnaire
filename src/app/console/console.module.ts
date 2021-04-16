@@ -8,6 +8,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ConsoleComponent } from './console.component';
 import { IntroComponent } from './intro/intro.component';
 import { QuestionComponent } from './question/question.component';
+import { QuestionListComponent } from './question-list/question-list.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ConsoleComponent, IntroComponent, QuestionComponent],
+  declarations: [ConsoleComponent, IntroComponent, QuestionComponent, QuestionListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
