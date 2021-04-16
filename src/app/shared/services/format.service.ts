@@ -9,7 +9,16 @@ import { AppData } from '../models';
 export class FormatService {
   appData = new AppData((data as any).default);
 
-  constructor() {
-    console.log(this.appData);
+  constructor() {}
+
+  getQuestion(index: number) {
+    if (index > this.appData.questions.length) {
+      return;
+    }
+    return this.appData.questions[index];
+  }
+
+  recordAnswer(question: number, answer: any) {
+    console.log(question, answer);
   }
 }

@@ -1,0 +1,14 @@
+.container-fluid {
+  flex: 1;
+
+  .row {
+
+    .col-4 {
+      overflow-y: auto;
+
+      .list-group {
+        border-radius: 0;
+      }
+    }
+  }
+}

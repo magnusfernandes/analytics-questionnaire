@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     loadChildren: () =>
       import(`./console/console.module`).then((m) => m.ConsoleModule),
   },
