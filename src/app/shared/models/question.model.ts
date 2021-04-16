@@ -1,6 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { Options } from '@angular-slider/ngx-slider';
 
 export class Question {
+  public code: string;
   public section: string;
   public title: string;
   public type: 'radio' | 'checkbox' | 'slider' | 'input';
@@ -9,6 +12,7 @@ export class Question {
   public sliderTotal: number;
 
   constructor(data: any) {
+    this.code = data.code ? data.code : uuidv4();
     this.section = data.section ? data.section : null;
     this.title = data.title ? data.title : null;
     this.type = data.type ? data.type : null;
@@ -35,12 +39,14 @@ export class QuestionOption {
 }
 
 export class Answer {
+  public questionCode: string;
   public questionNumber: number;
   public response: any;
 
   constructor(data: any) {
     this.questionNumber =
       data.questionNumber != null ? data.questionNumber : null;
+    this.questionCode = data.questionCode != null ? data.questionCode : null;
     this.response = data.response != null ? data.response : null;
   }
 }

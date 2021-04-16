@@ -148,7 +148,12 @@ export class QuestionComponent implements OnInit {
         ).colors;
         break;
     }
-    this._formatService.recordAnswer(this.questionNumber, response, colors);
+    this._formatService.recordAnswer(
+      this.questionNumber,
+      this.question.code,
+      response,
+      colors
+    );
   }
 
   initCheckboxes() {

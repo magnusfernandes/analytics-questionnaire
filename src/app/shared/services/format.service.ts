@@ -34,13 +34,19 @@ export class FormatService {
     );
   }
 
-  recordAnswer(questionNumber: number, response: any, colors: string[]) {
+  recordAnswer(
+    questionNumber: number,
+    code: string,
+    response: any,
+    colors: string[]
+  ) {
     let answer = new Answer({
+      questionCode: code,
       questionNumber,
       response,
     });
     let existing = this.recordedAnswers.find(
-      (record) => record.questionNumber == answer.questionNumber
+      (record) => record.questionCode == answer.questionCode
     );
     if (existing) {
       let newAnswers: Answer[] = [];
@@ -90,11 +96,11 @@ export class FormatService {
     }
     this.filterQuestions();
     if (this.filteredQuestions.value.length == this.recordedAnswers.length) {
-      console.log('Final answer: ', this.recordedAnswers);
+      this.saveData();
       return;
     }
     if (this.isEndOfSection()) {
-      console.log('Record section: ', this.recordedAnswers);
+      this.saveData();
       if (this.filteredQuestions.value[questionNumber + 1]) {
         this.recordedSections.push(
           this.filteredQuestions.value[questionNumber + 1].section
@@ -131,6 +137,7 @@ export class FormatService {
       });
     });
     this.filteredQuestions.next(filtered);
+    console.log(this.filteredQuestions.value.length);
   }
 
   getLastQuestion() {
@@ -142,5 +149,22 @@ export class FormatService {
       high < answer.questionNumber ? (high = answer.questionNumber) : null
     );
     return high;
+  }
+
+  saveData() {
+    console.log('Saving data!');
+    let finalData = [];
+    this.recordedAnswers.map((answer, index) => {
+      let finalAnswer = answer;
+      let actualQuestion = this.appData.questions.find(
+        (question) => answer.questionCode == question.code
+      );
+      if (!actualQuestion) {
+        return;
+      }
+      finalAnswer.questionNumber = index;
+      finalData.push(finalAnswer);
+    });
+    console.table(finalData);
   }
 }
