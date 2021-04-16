@@ -64,10 +64,8 @@ export class QuestionComponent implements OnInit {
         this.initCheckboxes();
         break;
       case 'slider':
-        this.questionForm.addControl(
-          'slider',
-          new FormControl(null, Validators.required)
-        );
+        this.questionForm.addControl('sliders', this._fb.array([]));
+        this.initSliders();
         break;
       default:
         this.questionForm.addControl(
@@ -88,8 +86,8 @@ export class QuestionComponent implements OnInit {
     return this.questionForm.get('input') as FormControl;
   }
 
-  get slider(): FormControl {
-    return this.questionForm.get('slider') as FormControl;
+  get sliders(): FormArray {
+    return this.questionForm.get('sliders') as FormArray;
   }
 
   get checkboxes(): FormArray {
@@ -111,6 +109,9 @@ export class QuestionComponent implements OnInit {
           });
           break;
         case 'slider':
+          this.sliders.controls.map((control, index) => {
+            control.patchValue(this.recordedAnswer.response[index]);
+          });
           break;
         default:
           this.radio.patchValue(this.recordedAnswer.response);
@@ -129,7 +130,7 @@ export class QuestionComponent implements OnInit {
         response = this.checkboxes.value;
         break;
       case 'slider':
-        response = this.slider.value;
+        response = this.sliders.value;
         break;
       default:
         response = this.radio.value;
@@ -148,5 +149,20 @@ export class QuestionComponent implements OnInit {
     while (this.checkboxes.length > 0) {
       this.checkboxes.removeAt(0);
     }
+    while (this.sliders.length > 0) {
+      this.sliders.removeAt(0);
+    }
+  }
+
+  initSliders() {
+    this.question.options.map((option, index) => {
+      this.sliders.push(this._fb.control(0, [Validators.required]));
+    });
+  }
+
+  getSliderTotal() {
+    let total = 0;
+    this.sliders.controls.map((control) => (total += control.value));
+    return total;
   }
 }

@@ -41,7 +41,6 @@ export class FormatService {
       this.recordedAnswers = this.recordedAnswers.map((record) =>
         record.questionNumber == answer.questionNumber ? answer : record
       );
-      console.log(this.recordedAnswers);
       if (questionNumber < this.appData.questions.length) {
         this._router.navigate(['question'], {
           queryParams: { index: questionNumber + 1 },

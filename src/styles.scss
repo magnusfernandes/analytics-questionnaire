@@ -13,3 +13,21 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.ngx-slider {
+  .ngx-slider-bubble {
+    background: #0E6EFF !important;
+    color: #FAFAFA !important;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 0 5px !important;
+  }
+
+  .ngx-slider-pointer {
+    background: #0E6EFF !important;
+  }
+}
+
+.fw-medium {
+  font-weight: 600;
+}
