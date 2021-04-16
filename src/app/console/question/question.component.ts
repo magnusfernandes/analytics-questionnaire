@@ -43,6 +43,11 @@ export class QuestionComponent implements OnInit {
       }
       this.questionForm ? this.questionForm.reset() : null;
       this.questionNumber = +params['index'];
+      if (this.questionNumber - 1 > this._formatService.getLastQuestion()) {
+        this._router.navigate(['question'], {
+          queryParams: { index: this.questionNumber - 1 },
+        });
+      }
       this.question = this._formatService.getQuestion(this.questionNumber);
       this.buildForm();
     });
@@ -52,6 +57,9 @@ export class QuestionComponent implements OnInit {
 
   buildForm() {
     this.questionForm = this._fb.group({});
+    if (!this.question) {
+      return;
+    }
     switch (this.question.type) {
       case 'input':
         this.questionForm.addControl(
@@ -122,6 +130,7 @@ export class QuestionComponent implements OnInit {
 
   continue() {
     let response: any;
+    let colors: string[] = [];
     switch (this.question.type) {
       case 'input':
         response = this.input.value;
@@ -134,9 +143,12 @@ export class QuestionComponent implements OnInit {
         break;
       default:
         response = this.radio.value;
+        colors = this.question.options.find(
+          (option, index) => index == response
+        ).colors;
         break;
     }
-    this._formatService.recordAnswer(this.questionNumber, response);
+    this._formatService.recordAnswer(this.questionNumber, response, colors);
   }
 
   initCheckboxes() {

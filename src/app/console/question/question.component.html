@@ -49,16 +49,13 @@
         </div>
       </div>
     </ng-container>
-
   </div>
-
 
   <hr class="mt-4 mb-4">
   <div class="d-flex justify-content-end">
-    <button *ngIf="this.recordedAnswer" class="btn btn-outline-danger" (click)="continue()"
+    <button *ngIf="this.recordedAnswer" class="btn btn-outline-danger py-2 px-4 fw-bold" (click)="continue()"
       [disabled]="questionForm.invalid">SAVE</button>
-    <button *ngIf="!this.recordedAnswer" class="btn btn-outline-primary" (click)="continue()"
+    <button *ngIf="!this.recordedAnswer" class="btn btn-outline-primary py-2 px-4 fw-bold" (click)="continue()"
       [disabled]="questionForm.invalid">SUBMIT</button>
   </div>
-
 </div>
