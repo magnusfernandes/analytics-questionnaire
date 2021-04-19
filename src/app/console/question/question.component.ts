@@ -84,6 +84,12 @@ export class QuestionComponent implements OnInit {
     }
     this.formReady = true;
     this.getResponse();
+
+    this.questionForm.valueChanges.subscribe((value) => {
+      if (this.question.type == 'radio') {
+        this.continue();
+      }
+    });
   }
 
   get radio(): FormControl {
