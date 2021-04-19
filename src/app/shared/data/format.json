@@ -280,8 +280,11 @@
       "title": "Approximately how much would it cost?",
       "type": "slider",
       "alignment": "vertical",
+      "sliderOptions": {
+        "min": 120,
+        "max": 200
+      },
       "colors": ["grey", "green"],
-      "sliderTotal": 320,
       "options": [{
           "title": "Red",
           "config": {

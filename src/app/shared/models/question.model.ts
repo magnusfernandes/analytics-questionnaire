@@ -10,7 +10,7 @@ export class Question {
   public type: 'radio' | 'checkbox' | 'slider' | 'input';
   public colors: string[];
   public options: QuestionOption[];
-  public sliderTotal: number;
+  public sliderOptions: SliderOptions;
 
   constructor(data: any) {
     this.code = data.code ? data.code : uuidv4();
@@ -18,7 +18,10 @@ export class Question {
     this.title = data.title ? data.title : null;
     this.alignment = data.alignment ? data.alignment : 'vertical';
     this.type = data.type ? data.type : null;
-    this.sliderTotal = data.sliderTotal != null ? data.sliderTotal : null;
+    this.sliderOptions =
+      data.sliderOptions != null
+        ? new SliderOptions(data.sliderOptions)
+        : new SliderOptions({});
     this.colors = data.colors ? data.colors : [];
     this.options = data.options
       ? data.options.map((option: any) => new QuestionOption(option))
@@ -64,5 +67,15 @@ export class SliderConfig {
     options.floor = data.options?.floor != null ? data.options.floor : 0;
     options.ceil = data.options?.ceil != null ? data.options.ceil : 100;
     this.options = options;
+  }
+}
+
+export class SliderOptions {
+  public min: number;
+  public max: number;
+
+  constructor(data: any) {
+    this.min = data.min != null ? data.min : null;
+    this.max = data.max != null ? data.max : null;
   }
 }

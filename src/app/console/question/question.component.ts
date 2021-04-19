@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -17,6 +17,8 @@ import { FormatService } from 'src/app/shared/services';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
+  @ViewChild('hiddenBtn', { static: false }) myHiddenBtn;
+
   public appData: AppData;
   public question: Question;
   public recordedAnswer: Answer;
@@ -86,8 +88,12 @@ export class QuestionComponent implements OnInit {
     this.getResponse();
 
     this.questionForm.valueChanges.subscribe((value) => {
-      if (this.question.type == 'radio') {
-        this.continue();
+      try {
+        if (this.question.type == 'radio' && this.radio?.value != null) {
+          this.continue(true);
+        }
+      } catch (err) {
+        console.log(err);
       }
     });
   }
@@ -134,7 +140,7 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  continue() {
+  continue(type: boolean) {
     let response: any;
     let colors: string[] = [];
     switch (this.question.type) {
@@ -145,20 +151,29 @@ export class QuestionComponent implements OnInit {
         response = this.checkboxes.value;
         break;
       case 'slider':
+        if (
+          !(
+            this.getSliderTotal() >= this.question.sliderOptions.min &&
+            this.getSliderTotal() <= this.question.sliderOptions.max
+          )
+        ) {
+          this.myHiddenBtn.nativeElement.click();
+          return;
+        }
         response = this.sliders.value;
         break;
       default:
         response = this.radio.value;
         colors = this.question.options.find(
           (option, index) => index == response
-        ).colors;
+        )?.colors;
         break;
     }
     this._formatService.recordAnswer(
       this.questionNumber,
       this.question.code,
       response,
-      colors
+      colors ? colors : []
     );
   }
 

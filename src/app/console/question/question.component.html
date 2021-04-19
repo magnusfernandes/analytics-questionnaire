@@ -36,7 +36,7 @@
         <div class="col-12 col-xl-10">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-6 mb-5">
+              <div class="col-6">
                 <div *ngFor="let control of sliders.controls; let i = index">
                   <div class="mb-5 px-5">
                     <p class="text-muted fw-medium">{{question.options[i].title}}</p>
@@ -45,8 +45,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6">
-                <h1 class="mt-5 mb-5 fw-bold">TOTAL: {{getSliderTotal()}}%</h1>
+              <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+                <h1 class="fw-bold">TOTAL: {{getSliderTotal()}}%</h1>
+                <small class="fw-medium text-danger">Values {{question.sliderOptions.min}}% -
+                  {{question.sliderOptions.max}}%</small>
               </div>
             </div>
           </div>
@@ -54,7 +56,6 @@
       </div>
     </ng-container>
   </div>
-
   <ng-container *ngIf="question.type != 'radio'">
     <hr class="mt-4 mb-4">
     <div class="d-flex justify-content-end">
@@ -64,4 +65,24 @@
         [disabled]="questionForm.invalid">SUBMIT</button>
     </div>
   </ng-container>
+</div>
+<button id="openModalButton" #hiddenBtn [hidden]="true" data-bs-toggle="modal" data-bs-target="#sliderWarningModal">Open
+  Modal</button>
+
+<div class="modal fade show" id="sliderWarningModal" tabindex="-1" aria-labelledby="sliderWarningLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold text-danger" id="sliderWarningLabel">Error!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Please make sure the total is between {{question.sliderOptions.min}}% & {{question.sliderOptions.max}}%</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
