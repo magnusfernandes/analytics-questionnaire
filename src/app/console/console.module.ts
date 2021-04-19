@@ -9,6 +9,7 @@ import { ConsoleComponent } from './console.component';
 import { IntroComponent } from './intro/intro.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ConsoleComponent, IntroComponent, QuestionComponent, QuestionListComponent],
+  declarations: [ConsoleComponent, IntroComponent, QuestionComponent, QuestionListComponent, StepperComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

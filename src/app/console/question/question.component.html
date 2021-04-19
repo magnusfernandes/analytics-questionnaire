@@ -3,9 +3,9 @@
 
   <div class="text-center mb-5" [formGroup]="questionForm">
     <ng-container *ngIf="question.type == 'radio'">
-      <div class="btn-group-vertical">
-        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group"
-          *ngFor="let option of question.options; let i = index">
+      <div [ngClass]="{'btn-group-vertical': question.alignment == 'vertical'}">
+        <div class="btn-group" [ngClass]="question.alignment == 'vertical' ? 'mb-3' : 'mx-3 my-3'" role="group"
+          aria-label="Basic radio toggle button group" *ngFor="let option of question.options; let i = index">
           <input type="radio" class="btn-check" [id]="'option' + i" [value]="i" formControlName="radio"
             autocomplete="off">
           <label class="btn btn-outline-primary" [for]="'option' + i">{{option.title}}</label>
@@ -36,16 +36,20 @@
         <div class="col-12 col-xl-10">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-6 mb-5" *ngFor="let control of sliders.controls; let i = index">
-                <div class="mb-5 px-5">
-                  <p class="text-muted fw-medium">{{question.options[i].title}}</p>
-                  <ngx-slider [formControl]="control" [options]="question.options[i].config.options">
-                  </ngx-slider>
+              <div class="col-6 mb-5">
+                <div *ngFor="let control of sliders.controls; let i = index">
+                  <div class="mb-5 px-5">
+                    <p class="text-muted fw-medium">{{question.options[i].title}}</p>
+                    <ngx-slider [formControl]="control" [options]="question.options[i].config.options">
+                    </ngx-slider>
+                  </div>
                 </div>
+              </div>
+              <div class="col-6">
+                <h1 class="mt-5 mb-5 fw-bold">TOTAL: {{getSliderTotal()}}%</h1>
               </div>
             </div>
           </div>
-          <h1 class="mt-5 mb-5 fw-bold">TOTAL: {{getSliderTotal()}}</h1>
         </div>
       </div>
     </ng-container>

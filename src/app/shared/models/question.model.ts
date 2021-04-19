@@ -6,6 +6,7 @@ export class Question {
   public code: string;
   public section: string;
   public title: string;
+  public alignment: 'vertical' | 'horizontal';
   public type: 'radio' | 'checkbox' | 'slider' | 'input';
   public colors: string[];
   public options: QuestionOption[];
@@ -15,6 +16,7 @@ export class Question {
     this.code = data.code ? data.code : uuidv4();
     this.section = data.section ? data.section : null;
     this.title = data.title ? data.title : null;
+    this.alignment = data.alignment ? data.alignment : 'vertical';
     this.type = data.type ? data.type : null;
     this.sliderTotal = data.sliderTotal != null ? data.sliderTotal : null;
     this.colors = data.colors ? data.colors : [];
