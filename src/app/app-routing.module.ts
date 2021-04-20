@@ -3,6 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'thank-you',
+    loadChildren: () =>
+      import(`./success/success.module`).then((m) => m.SuccessModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import(`./console/console.module`).then((m) => m.ConsoleModule),

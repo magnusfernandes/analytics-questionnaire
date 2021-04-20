@@ -96,7 +96,7 @@ export class FormatService {
     }
     this.filterQuestions();
     if (this.filteredQuestions.value.length == this.recordedAnswers.length) {
-      this.saveData();
+      this.saveData(true);
       return;
     }
     if (this.isEndOfSection()) {
@@ -137,7 +137,6 @@ export class FormatService {
       });
     });
     this.filteredQuestions.next(filtered);
-    console.log(this.filteredQuestions.value.length);
   }
 
   getLastQuestion() {
@@ -151,20 +150,26 @@ export class FormatService {
     return high;
   }
 
-  saveData() {
-    console.log('Saving data!');
+  saveData(isLast?: boolean) {
     let finalData = [];
-    this.recordedAnswers.map((answer, index) => {
-      let finalAnswer = answer;
-      let actualQuestion = this.appData.questions.find(
-        (question) => answer.questionCode == question.code
+    this.appData.questions.map((question, index) => {
+      let answer = this.recordedAnswers.find(
+        (item) => item.questionCode == question.code
       );
-      if (!actualQuestion) {
-        return;
+      if (answer) {
+        answer.questionNumber = index;
+      } else {
+        answer = new Answer({});
+        answer.questionCode = question.code;
+        answer.questionNumber = index;
+        answer.response = null;
       }
-      finalAnswer.questionNumber = index;
-      finalData.push(finalAnswer);
+      finalData.push(answer);
     });
     console.table(finalData);
+    if (isLast) {
+      this.recordedAnswers = [];
+      this._router.navigate(['thank-you']);
+    }
   }
 }

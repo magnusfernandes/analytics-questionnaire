@@ -58,30 +58,40 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {}
 
   buildForm() {
-    this.questionForm = this._fb.group({});
+    this.questionForm = this._fb.group({
+      input: [
+        {
+          value: null,
+          disabled: true,
+        },
+        Validators.required,
+      ],
+      checkboxes: this._fb.array([]),
+      sliders: this._fb.array([]),
+      radio: [
+        {
+          value: null,
+          disabled: true,
+        },
+        Validators.required,
+      ],
+    });
     if (!this.question) {
       return;
     }
+
     switch (this.question.type) {
       case 'input':
-        this.questionForm.addControl(
-          'input',
-          new FormControl(null, Validators.required)
-        );
+        this.input.enable();
         break;
       case 'checkbox':
-        this.questionForm.addControl('checkboxes', this._fb.array([]));
         this.initCheckboxes();
         break;
       case 'slider':
-        this.questionForm.addControl('sliders', this._fb.array([]));
         this.initSliders();
         break;
       default:
-        this.questionForm.addControl(
-          'radio',
-          new FormControl(null, Validators.required)
-        );
+        this.radio.enable();
         break;
     }
     this.formReady = true;

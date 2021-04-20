@@ -1,1 +1,11 @@
-<div class="container-fluid h-100"></div>
+<div class="container-fluid d-flex align-items-start justify-content-center h-100">
+  <div class="d-flex align-items-center position-relative">
+    <div class="line mx-3"></div>
+    <div class="dots d-flex">
+      <div class="dot d-flex align-items-center justify-content-center mx-3" [ngClass]="{'active': getIfActive(i)}"
+        *ngFor="let dot of dots; let i=index" (click)="stepClicked(i)">
+        <p class="m-0 fw-bold">{{getLabel(i)}}</p>
+      </div>
+    </div>
+  </div>
+</div>
