@@ -1,9 +1,11 @@
 .main {
   max-height: 100vh;
 
-  .container-fluid {
+  .body {
     flex: 1;
     max-height: calc(100% - 116px);
+    overflow: auto;
+    padding-bottom: 4rem;
 
     .row {
 

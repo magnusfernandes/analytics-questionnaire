@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy:prod": "ng build --prod && cd dist/survey && scp -i \"../../../analyticsassist.pem\" -r * ubuntu@13.234.189.26:/var/www/survey",
+    "upload:prod": "cd dist/survey && scp -i \"../../../analyticsassist.pem\" -r * ubuntu@13.234.189.26:/var/www/survey"
   },
   "private": true,
   "dependencies": {
