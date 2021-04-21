@@ -2,26 +2,122 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
+## To install dependencies
+
+Make sure you have node installed and run `npm install` in the root directory.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## To deploy
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Copy the `.pem` file to directory outside the root directory and run `npm run deploy:prod`
 
-## Build
+## Question format
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```json
+{
+  "heading": "Brand name (Title bar)",
+  "title": "Test title",
+  "version": 1,
+  "steps": 7,
+  "introduction": "Your description",
+  "questions": [] // questions go here
+}
+```
 
-## Running unit tests
+#### Question types
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Radio button
 
-## Running end-to-end tests
+```json
+{
+  "section": "A",
+  "title": "What do you like?",
+  "type": "radio",
+  "alignment": "horizontal",
+  "options": [
+    {
+      "title": "Mango",
+      "color": ["red"]
+    },
+    {
+      "title": "Orange"
+    },
+    {
+      "title": "Apple"
+    }
+  ]
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Checkbox
 
-## Further help
+```json
+{
+  "section": "A",
+  "title": "Choose what you like?",
+  "type": "checkbox",
+  "alignment": "horizontal",
+  "options": [
+    {
+      "title": "Mango",
+      "color": ["red"]
+    },
+    {
+      "title": "Orange"
+    },
+    {
+      "title": "Apple"
+    }
+  ]
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Input
+
+```json
+{
+  "section": "B",
+  "title": "Which is your favorite subject?",
+  "type": "input"
+}
+```
+
+- Slider
+
+```json
+{
+  "section": "C",
+  "title": "Approximately how much would it cost?",
+  "type": "slider",
+  "alignment": "vertical",
+  "sliderOptions": {
+    "min": 120,
+    "max": 200
+  },
+  "colors": ["grey", "green"],
+  "options": [
+    {
+      "title": "Red",
+      "config": {
+        "initialValue": 0,
+        "options": {
+          "floor": 0,
+          "ceil": 100
+        }
+      }
+    },
+    {
+      "title": "Blue"
+    },
+    {
+      "title": "Green"
+    },
+    {
+      "title": "Yellow"
+    }
+  ]
+}
+```
