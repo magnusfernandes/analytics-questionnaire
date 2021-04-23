@@ -1,7 +1,8 @@
 <div class="container-fluid mt-5" *ngIf="question && formReady">
-  <h4 class="mb-5 display-3 fw-bold text-center">{{question.title}}</h4>
+  <h4 class="mb-1 display-3 fw-bold text-center">{{question.title}}</h4>
+  <p class="fw-medium text-muted text-center" *ngIf="question.subTitle">{{question.subTitle}}</p>
 
-  <div class="text-center mb-5" [formGroup]="questionForm">
+  <div class="text-center mt-5 mb-5" [formGroup]="questionForm">
     <ng-container *ngIf="question.type == 'radio'">
       <div [ngClass]="{'btn-group-vertical': question.alignment == 'vertical'}">
         <div class="btn-group" [ngClass]="question.alignment == 'vertical' ? 'mb-3' : 'mx-3 my-3'" role="group"
@@ -31,6 +32,21 @@
       </ng-container>
     </div>
 
+    <ng-container *ngIf="question.type == 'scale'">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h5 *ngFor="let label of question.labels">{{label}}</h5>
+        </div>
+        <div class="btn-group w-100" role="group">
+          <ng-container *ngFor="let item of question.items; let i=index">
+            <input type="radio" class="btn-check" [id]="'option' + i" autocomplete="off" [value]="item"
+              formControlName="scale">
+            <label class="btn btn-outline-primary" [for]="'option' + i">{{item}}</label>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+
     <ng-container *ngIf="question.type == 'slider'">
       <div class="row justify-content-center">
         <div class="col-12 col-xl-10">
@@ -55,8 +71,18 @@
         </div>
       </div>
     </ng-container>
+    <ng-container *ngIf="!others.disabled">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-6 col-xl-4">
+            <input type="text" class="form-control" placeholder="Others" formControlName="others">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
   </div>
-  <ng-container *ngIf="question.type != 'radio'">
+  <ng-container *ngIf="question.showSubmit()">
     <hr class="mt-4 mb-4">
     <div class="d-flex justify-content-end">
       <button *ngIf="this.recordedAnswer" class="btn btn-outline-danger py-2 px-4 fw-bold" (click)="continue()"
@@ -65,6 +91,7 @@
         [disabled]="questionForm.invalid">SUBMIT</button>
     </div>
   </ng-container>
+
 </div>
 <button id="openModalButton" #hiddenBtn [hidden]="true" data-bs-toggle="modal" data-bs-target="#sliderWarningModal">Open
   Modal</button>

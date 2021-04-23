@@ -1,6 +1,10 @@
 .main {
   max-height: 100vh;
 
+  .logo {
+    max-height: 40px;
+  }
+
   .body {
     flex: 1;
     max-height: calc(100% - 116px);

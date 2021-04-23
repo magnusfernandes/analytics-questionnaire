@@ -15,6 +15,7 @@ export class FormatService {
 
   appData = new AppData((data as any).default);
 
+  public startTime = new Date();
   public filteredQuestions: BehaviorSubject<Question[]> = new BehaviorSubject(
     this.appData.questions
   );
@@ -38,12 +39,16 @@ export class FormatService {
     questionNumber: number,
     code: string,
     response: any,
+    others: any,
     colors: string[]
   ) {
+    let time = this.startTime.getTime() - new Date().getTime();
     let answer = new Answer({
       questionCode: code,
       questionNumber,
       response,
+      others,
+      seconds: Math.abs(time / 1000),
     });
     let existing = this.recordedAnswers.find(
       (record) => record.questionCode == answer.questionCode

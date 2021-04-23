@@ -1,7 +1,10 @@
 <div class="h-100 d-flex flex-column main" *ngIf="appData">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="./"><span class="fw-bold">{{appData.heading}}</span></a>
+      <a class="navbar-brand" routerLink="./">
+        <span *ngIf="!appData.logo" class="fw-bold">{{appData.heading}}</span>
+        <img *ngIf="appData.logo" class="img-fluid logo" [src]="'../../assets/' + appData.logo">
+      </a>
       <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

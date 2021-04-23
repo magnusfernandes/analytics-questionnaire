@@ -1,0 +1,642 @@
+{
+  "heading": "",
+  "title": "Wealth Management",
+  "version": 1,
+  "steps": 7,
+  "introduction": "Hi! I belong to Analytics Station LLP, a Market Research firm based out of Panjim, Goa. From time to time we conduct surveys to better understand customer behaviour within specific categories of products and services. Today we hope to capture your valuable opinion on wealth management. The information that you share with us is completely confidential and we will never reveal your personal identity at any point through this study. Could we have 10 minutes of your time for the same?",
+  "questions": [{
+      "section": "A",
+      "title": "Could you please tell us your age?",
+      "type": "radio",
+      "alignment": "horizontal",
+      "options": [{
+          "title": "Below 30 years"
+        },
+        {
+          "title": "30-40 years"
+        },
+        {
+          "title": "40-50 years"
+        },
+        {
+          "title": "50-60 years"
+        },
+        {
+          "title": "Above 60 years"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Please select your gender?",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "Male"
+        },
+        {
+          "title": "Female"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "What is the nature of your profession?",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "Business person"
+        },
+        {
+          "title": "Doctor"
+        },
+        {
+          "title": "Lawyer"
+        },
+        {
+          "title": "Teacher / Professor"
+        },
+        {
+          "title": "Police / Armed forces"
+        },
+        {
+          "title": "Service (non govt.)"
+        },
+        {
+          "title": "Service (govt.)"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "What type of family you stay in?",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "Nuclear – (Husband, wife & kids, without parents)"
+        },
+        {
+          "title": "Nuclear – (Husband, wife & kids, with parents)"
+        },
+        {
+          "title": "Joint – (Husband, wife & kids, parents and siblings/other relatives)"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Relationship status??",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "Single"
+        },
+        {
+          "title": "Married"
+        },
+        {
+          "title": "Separated"
+        },
+        {
+          "title": "Live in relationship"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "What income group would suit you the most (Annual Income)?",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "< INR 3 Lakhs"
+        },
+        {
+          "title": "INR 3 Lakhs – INR 6 Lakhs"
+        },
+        {
+          "title": "INR 6 Lakhs – INR 12 Lakhs"
+        },
+        {
+          "title": "INR 12 Lakhs – INR 25 Lakhs"
+        },
+        {
+          "title": "INR 25 Lakhs – 50 Lakhs"
+        },
+        {
+          "title": "> INR 50 Lakhs"
+        }
+      ]
+    },
+    {
+      "section": "A",
+      "title": "Qualification?",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "Illiterate"
+        },
+        {
+          "title": "School – SSC/HSC"
+        },
+        {
+          "title": "SSC/HSC but not graduate"
+        },
+        {
+          "title": "Graduate / post graduate general"
+        },
+        {
+          "title": "Graduate / post graduate professional"
+        }
+      ]
+    },
+    {
+      "section": "B",
+      "title": "Which companies or individuals (NOT CA’s and accountants) come to your mind when I say a wealth management company / wealth manager / financial planner?",
+      "type": "input"
+    },
+    {
+      "section": "B",
+      "title": "From the following list of wealth management companies / wealth managers / financial planners which one are you aware of?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "options": [{
+          "title": "IIFL Wealth"
+        },
+        {
+          "title": "Aditya Birla money"
+        },
+        {
+          "title": "Jennifer Mendes"
+        },
+        {
+          "title": "Anup Prabhu Verlekar (APV Financials)"
+        },
+        {
+          "title": "Pradip Joshi"
+        },
+        {
+          "title": "Hari Kamat"
+        },
+        {
+          "title": "Mahesh Pai’s Financial Hub"
+        },
+        {
+          "title": "Franklin Templeton"
+        },
+        {
+          "title": "Imperial Wealth Services"
+        },
+        {
+          "title": "Shivranjani Securities"
+        },
+        {
+          "title": "Rajesh Chheda (Finance Factory)"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Do you have a financial plan?",
+      "type": "radio",
+      "alignment": "vertical",
+      "options": [{
+          "title": "Yes",
+          "colors": ["green"]
+        },
+        {
+          "title": "No",
+          "colors": ["grey"]
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Currently who guides you in your financial planning?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "I do it myself / I take help from my spouse",
+          "colors": ["lightblue"]
+        },
+        {
+          "title": "I take help from my family members",
+          "colors": ["lightblue"]
+        },
+        {
+          "title": "I take help from my friends",
+          "colors": ["lightblue"]
+        },
+        {
+          "title": "I work with a wealth management company/wealth manager/ financial planner",
+          "colors": ["blue"]
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "On a scale of 1 – 5 how important do you think financial planning is?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Definitely not important"
+        },
+        {
+          "title": "Not important"
+        },
+        {
+          "title": "No opinion"
+        },
+        {
+          "title": "Important"
+        },
+        {
+          "title": "Definitely important"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Which statement would suit you best when it comes to following or adhering to your financial plan?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "I strictly follow my financial plan"
+        },
+        {
+          "title": "I try to follow my financial plan"
+        },
+        {
+          "title": "I follow some part of my financial plan"
+        },
+        {
+          "title": "I do not follow my financial plan"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Approximately, how would your yearly income distribution look like in percentage(%)?",
+      "type": "slider",
+      "alignment": "vertical",
+      "sliderOptions": {
+        "min": 90,
+        "max": 100
+      },
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Insurance (Life / health insurance)",
+          "config": {
+            "initialValue": 0,
+            "options": {
+              "floor": 0,
+              "ceil": 100
+            }
+          }
+        },
+        {
+          "title": "Investments (FD, Mutual funds, etc"
+        },
+        {
+          "title": "Savings (Saving bank accounts, cash, etc)"
+        },
+        {
+          "title": "Expenses (Rent, Loans, etc)"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Approximately, how would your yearly expense allocation look like in percentage(%)?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Rent"
+        },
+        {
+          "title": "Loans (Car Loan, House Loan)"
+        },
+        {
+          "title": "Household expenses"
+        },
+        {
+          "title": "Vacation & Leisure"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Which of the following asset classes do you invest in?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["grey", "green"],
+      "options": [{
+          "title": "Life insurance"
+        },
+        {
+          "title": "Fixed deposits / Recurring deposits / PPF"
+        },
+        {
+          "title": "Gold"
+        },
+        {
+          "title": "Equity shares / Debentures"
+        },
+        {
+          "title": "NSC/NSS/SCSS/ other postal services"
+        },
+        {
+          "title": "Mutual funds"
+        },
+        {
+          "title": "NPS / Pension plans"
+        },
+        {
+          "title": "Real Estates"
+        },
+        {
+          "title": "Art / Antiques"
+        },
+        {
+          "title": "Others"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Currently are you working with any wealth management companies / wealth managers / financial planners?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["grey", "green", "blue"],
+      "options": [{
+          "title": "Yes",
+          "colors": ["green"]
+        },
+        {
+          "title": "No",
+          "colors": ["pink"]
+        },
+        {
+          "title": "No, but I’m planning to",
+          "colors": ["pink"]
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Primarily, what type of wealth management company / wealth manager / financial planner are you working with?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "Bank"
+        },
+        {
+          "title": "Insurance agent"
+        },
+        {
+          "title": "Certified financial planner"
+        },
+        {
+          "title": "Mutual fund distributor"
+        },
+        {
+          "title": "Stock broking firm"
+        },
+        {
+          "title": "Online platform"
+        },
+        {
+          "title": "Others"
+        }      
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What other type of wealth management company / wealth manager / financial planner are you working with?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "Bank"
+        },
+        {
+          "title": "Insurance agent"
+        },
+        {
+          "title": "Certified financial planner"
+        },
+        {
+          "title": "Mutual fund distributor"
+        },
+        {
+          "title": "Stock broking firm"
+        },
+        {
+          "title": "Online platform"
+        },
+        {
+          "title": "Others"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "How long have you been working with this wealth management company / wealth manager / financial planner?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "Just started"
+        },
+        {
+          "title": "Less than 1 year"
+        },
+        {
+          "title": "More than 1 year but less than 3 years"
+        },
+        {
+          "title": "More than 3 years but less than 5 years"
+        },
+        {
+          "title": "More than 5 years but less than 10 years"
+        },
+        {
+          "title": "More than 10 years"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "How satisfied are you with their performance?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "Very dis-satisfied"
+        },
+        {
+          "title": "Dis-satisfied"
+        },
+        {
+          "title": "Satisfied"
+        },
+        {
+          "title": "Very satisfied"
+        },
+        {
+          "title": "Extremely satisfied"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "Why have you not given a try to the services of wealth management companies / wealth managers / financial planners?",
+      "type": "radio",
+      "alignment": "vertical",
+      "colors": ["lightblue", "pink"],
+      "options": [{
+          "title": "They are not trustworthy"
+        },
+        {
+          "title": "They are too expensive"
+        },
+        {
+          "title": "They complicate simple matters"
+        },
+        {
+          "title": "They don’t give enough time"
+        },
+        {
+          "title": "They are not qualified enough to handle my money"
+        },
+        {
+          "title": "I’m worried about my data privacy"
+        },
+        {
+          "title": "Others"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What is your objective in hiring wealth management company / wealth manager / financial planner?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "Better returns on my investment"
+        },
+        {
+          "title": "Build a balanced/diversified portfolio"
+        },
+        {
+          "title": "Reduce risk of losses"
+        },
+        {
+          "title": "Guidance on the right financial product"
+        },
+        {
+          "title": "Reduce my workload on managing money"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What would be your objective in hiring wealth management company / wealth manager / financial planner?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["pink"],
+      "options": [{
+          "title": "Better returns on my investment"
+        },
+        {
+          "title": "Build a balanced/diversified portfolio"
+        },
+        {
+          "title": "Reduce risk of losses"
+        },
+        {
+          "title": "Guidance on the right financial product"
+        },
+        {
+          "title": "Reduce my workload on managing money"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What skills / capabilities do you seek in a wealth management company / wealth manager / financial planner?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["green"],
+      "options": [{
+          "title": "Knowledge of various financial products"
+        },
+        {
+          "title": "Awareness of current market situations"
+        },
+        {
+          "title": "Ability to understand the requirement"
+        },
+        {
+          "title": "Soft skills"
+        },
+        {
+          "title": "Accessibility of all time"
+        },
+        {
+          "title": "Assistance provided for online servicing"
+        },
+        {
+          "title": "Personal interaction"
+        },
+        {
+          "title": "Qualification and certification"
+        },
+        {
+          "title": "Multi financial services"
+        }
+      ]
+    },
+    {
+      "section": "C",
+      "title": "What skills / capabilities would you seek in a wealth management company / wealth manager / financial planner?",
+      "type": "checkbox",
+      "alignment": "vertical",
+      "colors": ["pink"],
+      "options": [{
+          "title": "Knowledge of various financial products"
+        },
+        {
+          "title": "Awareness of current market situations"
+        },
+        {
+          "title": "Ability to understand the requirement"
+        },
+        {
+          "title": "Soft skills"
+        },
+        {
+          "title": "Accessibility of all time"
+        },
+        {
+          "title": "Assistance provided for online servicing"
+        },
+        {
+          "title": "Personal interaction"
+        },
+        {
+          "title": "Qualification and certification"
+        },
+        {
+          "title": "Multi financial services"
+        }
+      ]
+    }
+  ]
+}
+

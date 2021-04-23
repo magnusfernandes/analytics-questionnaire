@@ -75,6 +75,20 @@ export class QuestionComponent implements OnInit {
         },
         Validators.required,
       ],
+      scale: [
+        {
+          value: null,
+          disabled: true,
+        },
+        Validators.required,
+      ],
+      others: [
+        {
+          value: null,
+          disabled: true,
+        },
+        Validators.required,
+      ],
     });
     if (!this.question) {
       return;
@@ -90,6 +104,9 @@ export class QuestionComponent implements OnInit {
       case 'slider':
         this.initSliders();
         break;
+      case 'scale':
+        this.scale.enable();
+        break;
       default:
         this.radio.enable();
         break;
@@ -100,16 +117,51 @@ export class QuestionComponent implements OnInit {
     this.questionForm.valueChanges.subscribe((value) => {
       try {
         if (this.question.type == 'radio' && this.radio?.value != null) {
+          if (!this.question.ifOthersExists()) {
+            this.continue(true);
+          }
+        }
+        if (this.question.type == 'scale' && this.scale?.value != null) {
           this.continue(true);
         }
       } catch (err) {
         console.log(err);
       }
     });
+
+    this.radio.valueChanges.subscribe((value) => {
+      if (this.question.options[value]?.title.toLowerCase() == 'others') {
+        this.others.enable();
+      } else {
+        this.others.disable();
+        this.others.reset();
+      }
+    });
+
+    this.checkboxes.valueChanges.subscribe((value) => {
+      for (let i = 0; i < this.question.options.length; i++) {
+        let item = this.question.options[i];
+        if (item.title.toLowerCase() == 'others' && value[i]) {
+          this.others.enable();
+          break;
+        } else {
+          this.others.disable();
+          this.others.reset();
+        }
+      }
+    });
   }
 
   get radio(): FormControl {
     return this.questionForm.get('radio') as FormControl;
+  }
+
+  get scale(): FormControl {
+    return this.questionForm.get('scale') as FormControl;
+  }
+
+  get others(): FormControl {
+    return this.questionForm.get('others') as FormControl;
   }
 
   get input(): FormControl {
@@ -143,6 +195,9 @@ export class QuestionComponent implements OnInit {
             control.patchValue(this.recordedAnswer.response[index]);
           });
           break;
+        case 'scale':
+          this.scale.patchValue(this.recordedAnswer.response);
+          break;
         default:
           this.radio.patchValue(this.recordedAnswer.response);
           break;
@@ -153,11 +208,15 @@ export class QuestionComponent implements OnInit {
   continue(type: boolean) {
     let response: any;
     let colors: string[] = [];
+    let others;
     switch (this.question.type) {
       case 'input':
         response = this.input.value;
         break;
       case 'checkbox':
+        if (this.others.enabled) {
+          others = this.others.value;
+        }
         response = this.checkboxes.value;
         break;
       case 'slider':
@@ -172,6 +231,9 @@ export class QuestionComponent implements OnInit {
         }
         response = this.sliders.value;
         break;
+      case 'scale':
+        response = this.scale.value;
+        break;
       default:
         response = this.radio.value;
         colors = this.question.options.find(
@@ -183,6 +245,7 @@ export class QuestionComponent implements OnInit {
       this.questionNumber,
       this.question.code,
       response,
+      others,
       colors ? colors : []
     );
   }

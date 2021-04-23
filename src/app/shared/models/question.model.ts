@@ -6,8 +6,11 @@ export class Question {
   public code: string;
   public section: string;
   public title: string;
+  public subTitle: string;
   public alignment: 'vertical' | 'horizontal';
-  public type: 'radio' | 'checkbox' | 'slider' | 'input';
+  public type: 'radio' | 'checkbox' | 'slider' | 'input' | 'scale';
+  public items: any[];
+  public labels: string[];
   public colors: string[];
   public options: QuestionOption[];
   public sliderOptions: SliderOptions;
@@ -16,16 +19,39 @@ export class Question {
     this.code = data.code ? data.code : uuidv4();
     this.section = data.section ? data.section : null;
     this.title = data.title ? data.title : null;
+    this.subTitle = data.subTitle ? data.subTitle : null;
     this.alignment = data.alignment ? data.alignment : 'vertical';
     this.type = data.type ? data.type : null;
     this.sliderOptions =
       data.sliderOptions != null
         ? new SliderOptions(data.sliderOptions)
         : new SliderOptions({});
+    this.items = data.items ? data.items : [];
+    this.labels = data.labels ? data.labels : [];
     this.colors = data.colors ? data.colors : [];
     this.options = data.options
       ? data.options.map((option: any) => new QuestionOption(option))
       : [];
+  }
+
+  ifOthersExists(): boolean {
+    if (this.type != 'radio' && this.type != 'checkbox') {
+      return false;
+    }
+    if (this.options.find((item) => item.title.toLowerCase() == 'others')) {
+      return true;
+    }
+    return false;
+  }
+
+  showSubmit(): boolean {
+    if (this.type == 'radio' && this.ifOthersExists()) {
+      return true;
+    }
+    if (this.type == 'radio' || this.type == 'scale') {
+      return false;
+    }
+    return true;
   }
 }
 
@@ -47,12 +73,16 @@ export class Answer {
   public questionCode: string;
   public questionNumber: number;
   public response: any;
+  public others: any;
+  public seconds: number;
 
   constructor(data: any) {
     this.questionNumber =
       data.questionNumber != null ? data.questionNumber : null;
     this.questionCode = data.questionCode != null ? data.questionCode : null;
     this.response = data.response != null ? data.response : null;
+    this.others = data.others != null ? data.others : null;
+    this.seconds = data.seconds != null ? data.seconds : null;
   }
 }
 
