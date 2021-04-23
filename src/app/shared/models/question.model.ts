@@ -75,6 +75,7 @@ export class Answer {
   public response: any;
   public others: any;
   public seconds: number;
+  public colors: string[];
 
   constructor(data: any) {
     this.questionNumber =
@@ -83,6 +84,7 @@ export class Answer {
     this.response = data.response != null ? data.response : null;
     this.others = data.others != null ? data.others : null;
     this.seconds = data.seconds != null ? data.seconds : null;
+    this.colors = data.colors ? data.colors : [];
   }
 }
 

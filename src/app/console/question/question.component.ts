@@ -96,7 +96,7 @@ export class QuestionComponent implements OnInit {
 
     switch (this.question.type) {
       case 'input':
-        this.input.enable();
+        this.input.enable({ emitEvent: false });
         break;
       case 'checkbox':
         this.initCheckboxes();
@@ -105,10 +105,10 @@ export class QuestionComponent implements OnInit {
         this.initSliders();
         break;
       case 'scale':
-        this.scale.enable();
+        this.scale.enable({ emitEvent: false });
         break;
       default:
-        this.radio.enable();
+        this.radio.enable({ emitEvent: false });
         break;
     }
     this.formReady = true;
@@ -131,9 +131,9 @@ export class QuestionComponent implements OnInit {
 
     this.radio.valueChanges.subscribe((value) => {
       if (this.question.options[value]?.title.toLowerCase() == 'others') {
-        this.others.enable();
+        this.others.enable({ emitEvent: false });
       } else {
-        this.others.disable();
+        this.others.disable({ emitEvent: false });
         this.others.reset();
       }
     });
@@ -183,23 +183,33 @@ export class QuestionComponent implements OnInit {
     if (this.recordedAnswer) {
       switch (this.question.type) {
         case 'input':
-          this.input.patchValue(this.recordedAnswer.response);
+          this.input.patchValue(this.recordedAnswer.response, {
+            emitEvent: false,
+          });
           break;
         case 'checkbox':
           this.checkboxes.controls.map((control, index) => {
-            control.patchValue(this.recordedAnswer.response[index]);
+            control.patchValue(this.recordedAnswer.response[index], {
+              emitEvent: false,
+            });
           });
           break;
         case 'slider':
           this.sliders.controls.map((control, index) => {
-            control.patchValue(this.recordedAnswer.response[index]);
+            control.patchValue(this.recordedAnswer.response[index], {
+              emitEvent: false,
+            });
           });
           break;
         case 'scale':
-          this.scale.patchValue(this.recordedAnswer.response);
+          this.scale.patchValue(this.recordedAnswer.response, {
+            emitEvent: false,
+          });
           break;
         default:
-          this.radio.patchValue(this.recordedAnswer.response);
+          this.radio.patchValue(this.recordedAnswer.response, {
+            emitEvent: false,
+          });
           break;
       }
     }

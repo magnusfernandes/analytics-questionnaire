@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import * as data from '../data/format.json';
+import * as data from '../data/new-format.json';
 import { Answer, AppData, Question } from '../models';
 
 @Injectable({
@@ -49,6 +49,7 @@ export class FormatService {
       response,
       others,
       seconds: Math.abs(time / 1000),
+      colors,
     });
     let existing = this.recordedAnswers.find(
       (record) => record.questionCode == answer.questionCode
@@ -59,7 +60,12 @@ export class FormatService {
       for (let i = 0; i < this.recordedAnswers.length; i++) {
         let recordedAnswer = this.recordedAnswers[i];
         if (recordedAnswer.questionNumber == answer.questionNumber) {
-          this.selectedColors = newColors;
+          this.selectedColors = [];
+          for (let j = 0; j < newColors.length; j++) {
+            if (!this.selectedColors.includes(newColors[j])) {
+              this.selectedColors.push(newColors[j]);
+            }
+          }
           this.recordedAnswers = newAnswers;
           newAnswers.push(answer);
           this.filterQuestions();
@@ -68,10 +74,7 @@ export class FormatService {
           });
           break;
         }
-        newColors = [
-          ...newColors,
-          ...this.filteredQuestions.value[questionNumber].colors,
-        ];
+        newColors = [...newColors, ...this.recordedAnswers[i].colors];
         newAnswers.push(recordedAnswer);
       }
     } else {
@@ -87,7 +90,6 @@ export class FormatService {
         ? null
         : this.selectedColors.push(color)
     );
-
     if (
       this.recordedSections.length == 0 ||
       this.recordedSections.length >

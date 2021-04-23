@@ -1,6 +1,7 @@
 {
   "heading": "",
   "title": "Wealth Management",
+  "logo": "logo.png",
   "version": 1,
   "steps": 7,
   "introduction": "Hi! I belong to Analytics Station LLP, a Market Research firm based out of Panjim, Goa. From time to time we conduct surveys to better understand customer behaviour within specific categories of products and services. Today we hope to capture your valuable opinion on wealth management. The information that you share with us is completely confidential and we will never reveal your personal identity at any point through this study. Could we have 10 minutes of your time for the same?",
@@ -411,7 +412,7 @@
         },
         {
           "title": "Others"
-        }      
+        }
       ]
     },
     {
@@ -639,4 +640,3 @@
     }
   ]
 }
-
