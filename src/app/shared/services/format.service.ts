@@ -171,9 +171,38 @@ export class FormatService {
         answer.questionNumber = index;
         answer.response = null;
       }
-      finalData.push(answer);
+      let data: any = {
+        question: this.appData.questions[answer.questionNumber].title,
+        time: answer.seconds,
+      };
+      if (answer.response != null) {
+        switch (this.appData.questions[answer.questionNumber].type) {
+          case 'checkbox':
+            data.response = [];
+            answer.response?.map((item, index) =>
+              item
+                ? data.response.push(
+                    this.appData.questions[answer.questionNumber].options[index]
+                      .title
+                  )
+                : null
+            );
+            break;
+          case 'radio':
+            console.log(answer.response);
+            data.response = this.appData.questions[
+              answer.questionNumber
+            ].options[answer.response].title;
+            break;
+          default:
+            data.response = answer.response;
+            break;
+        }
+      }
+      finalData.push(data);
     });
     console.table(finalData);
+    console.log(JSON.stringify(finalData));
     if (isLast) {
       this.recordedAnswers = [];
       this._router.navigate(['thank-you']);
