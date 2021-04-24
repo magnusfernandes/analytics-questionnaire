@@ -1,8 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainService {
-  constructor() {}
+  constructor(private _http: HttpClient) {}
+
+  publishData(body: any) {
+    this._http
+      .post(`${environment.baseUrl}/entries/publish`, body)
+      .subscribe((resp) => {
+        console.log(resp);
+      });
+  }
 }

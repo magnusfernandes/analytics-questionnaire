@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as data from '../data/new-format.json';
 import { Answer, AppData, Question } from '../models';
+import { MainService } from './main.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +18,12 @@ export class FormatService {
   appData = new AppData((data as any).default);
 
   public startTime = new Date();
+  public instance = uuidv4();
   public filteredQuestions: BehaviorSubject<Question[]> = new BehaviorSubject(
     this.appData.questions
   );
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _mainService: MainService) {}
 
   getQuestion(index: number) {
     if (index > this.filteredQuestions.value.length) {
@@ -201,8 +204,11 @@ export class FormatService {
       }
       finalData.push(data);
     });
-    console.table(finalData);
-    console.log(JSON.stringify(finalData));
+    this._mainService.publishData({
+      id: this.instance,
+      version: this.appData.version,
+      data: finalData,
+    });
     if (isLast) {
       this.recordedAnswers = [];
       this._router.navigate(['thank-you']);
