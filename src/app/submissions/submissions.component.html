@@ -1,0 +1,20 @@
+<div *ngIf="data" class="container mt-5">
+  <h3 class="mb-0">Test name: {{data.test}}</h3>
+  <h5 class="mb-0">Version: {{data.version}}</h5>
+  <p class="mb-0">User: {{data.user}}</p>
+  <p class="mb-0">Answered on: {{data.createdAt | date: 'dd MMM yyyy hh:mm a'}}</p>
+  <hr>
+
+  <ul>
+    <li class="mb-4" *ngFor="let item of data.responses">
+      <p class="mb-0">{{item.question}}</p>
+      <ng-container *ngIf="item.response">
+        <p class="mb-0">{{item.response}}</p>
+        <p class="mb-0 text-success">{{item.time}}</p>
+      </ng-container>
+      <ng-container *ngIf="!item.response">
+        <p class="mb-0 text-danger">Not answered</p>
+      </ng-container>
+    </li>
+  </ul>
+</div>

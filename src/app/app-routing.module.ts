@@ -8,6 +8,13 @@ const routes: Routes = [
       import(`./success/success.module`).then((m) => m.SuccessModule),
   },
   {
+    path: 'submissions/:userId',
+    loadChildren: () =>
+      import(`./submissions/submissions.module`).then(
+        (m) => m.SubmissionsModule
+      ),
+  },
+  {
     path: 'research/:formatId',
     loadChildren: () =>
       import(`./console/console.module`).then((m) => m.ConsoleModule),

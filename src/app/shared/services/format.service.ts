@@ -199,7 +199,6 @@ export class FormatService {
             );
             break;
           case 'radio':
-            console.log(answer.response);
             data.response = this.appData.value.questions[
               answer.questionNumber
             ].options[answer.response].title;
@@ -213,6 +212,7 @@ export class FormatService {
     });
     this._mainService.publishData({
       id: this.instance,
+      test: this.formatId.value,
       version: this.appData.value.version,
       data: finalData,
     });
