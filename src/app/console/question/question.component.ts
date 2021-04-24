@@ -17,7 +17,8 @@ import { FormatService } from 'src/app/shared/services';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-  @ViewChild('hiddenBtn', { static: false }) myHiddenBtn;
+  @ViewChild('sliderWarningBtn', { static: false }) sliderWarningBtn;
+  @ViewChild('checkboxWarningBtn', { static: false }) checkboxWarningBtn;
 
   public appData: AppData;
   public formatId: string;
@@ -230,6 +231,16 @@ export class QuestionComponent implements OnInit {
         response = this.input.value;
         break;
       case 'checkbox':
+        let isSelected = false;
+        this.checkboxes.controls.map((control) => {
+          if (control.value) {
+            isSelected = true;
+          }
+        });
+        if (!isSelected) {
+          this.checkboxWarningBtn.nativeElement.click();
+          return;
+        }
         if (this.others.enabled) {
           others = this.others.value;
         }
@@ -242,7 +253,7 @@ export class QuestionComponent implements OnInit {
             this.getSliderTotal() <= this.question.sliderOptions.max
           )
         ) {
-          this.myHiddenBtn.nativeElement.click();
+          this.sliderWarningBtn.nativeElement.click();
           return;
         }
         response = this.sliders.value;

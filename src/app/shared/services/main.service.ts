@@ -22,9 +22,6 @@ export class MainService {
   fetchData(userId: string) {
     this._http
       .get(`${environment.baseUrl}/entries/${userId}`)
-      .subscribe((resp: any) => {
-        this.data.next(resp.message);
-        console.log(resp);
-      });
+      .subscribe((resp: any) => this.data.next(resp.message));
   }
 }

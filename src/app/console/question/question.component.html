@@ -93,7 +93,11 @@
   </ng-container>
 
 </div>
-<button id="openModalButton" #hiddenBtn [hidden]="true" data-bs-toggle="modal" data-bs-target="#sliderWarningModal">Open
+<button id="openModalButton" #sliderWarningBtn [hidden]="true" data-bs-toggle="modal"
+  data-bs-target="#sliderWarningModal">Open
+  Modal</button>
+<button id="openModalButton" #checkboxWarningBtn [hidden]="true" data-bs-toggle="modal"
+  data-bs-target="#checkboxWarningModal">Open
   Modal</button>
 
 <div class="modal fade show" id="sliderWarningModal" tabindex="-1" aria-labelledby="sliderWarningLabel"
@@ -107,6 +111,24 @@
       <div class="modal-body">
         <h5>Please make sure the total is between {{question?.sliderOptions?.min}}% & {{question?.sliderOptions?.max}}%
         </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade show" id="checkboxWarningModal" tabindex="-1" aria-labelledby="checkboxWarningLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold text-danger" id="checkboxWarningLabel">Error!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Please select at least one option!</h5>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
