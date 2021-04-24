@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
-import * as data from '../data/new-format.json';
 import { Answer, AppData, Question } from '../models';
 import { MainService } from './main.service';
 
@@ -15,15 +14,22 @@ export class FormatService {
   recordedSections: string[] = [];
   selectedColors: string[] = [];
 
-  appData = new AppData((data as any).default);
-
   public startTime = new Date();
   public instance = uuidv4();
   public filteredQuestions: BehaviorSubject<Question[]> = new BehaviorSubject(
-    this.appData.questions
+    []
   );
+  public appData: BehaviorSubject<AppData> = new BehaviorSubject(null);
+  public formatId: BehaviorSubject<string> = new BehaviorSubject(null);
 
   constructor(private _router: Router, private _mainService: MainService) {}
+
+  async importFile(format: string) {
+    this.appData.next(
+      new AppData((await import(`../data/${format}.json`)).default)
+    );
+    this.filteredQuestions.next(this.appData.value.questions);
+  }
 
   getQuestion(index: number) {
     if (index > this.filteredQuestions.value.length) {
@@ -72,7 +78,7 @@ export class FormatService {
           this.recordedAnswers = newAnswers;
           newAnswers.push(answer);
           this.filterQuestions();
-          this._router.navigate(['question'], {
+          this._router.navigate(['research', this.formatId.value, 'question'], {
             queryParams: { index: questionNumber + 1 },
           });
           break;
@@ -83,7 +89,7 @@ export class FormatService {
     } else {
       this.recordedAnswers.push(answer);
       if (questionNumber < this.filteredQuestions.value.length) {
-        this._router.navigate(['question'], {
+        this._router.navigate(['research', this.formatId.value, 'question'], {
           queryParams: { index: questionNumber + 1 },
         });
       }
@@ -136,7 +142,7 @@ export class FormatService {
 
   filterQuestions() {
     let filtered = [];
-    this.appData.questions.map((question) => {
+    this.appData.value.questions.map((question) => {
       if (question.colors.length == 0) {
         filtered.push(question);
       }
@@ -162,7 +168,7 @@ export class FormatService {
 
   saveData(isLast?: boolean) {
     let finalData = [];
-    this.appData.questions.map((question, index) => {
+    this.appData.value.questions.map((question, index) => {
       let answer = this.recordedAnswers.find(
         (item) => item.questionCode == question.code
       );
@@ -175,25 +181,26 @@ export class FormatService {
         answer.response = null;
       }
       let data: any = {
-        question: this.appData.questions[answer.questionNumber].title,
+        question: this.appData.value.questions[answer.questionNumber].title,
         time: answer.seconds,
       };
       if (answer.response != null) {
-        switch (this.appData.questions[answer.questionNumber].type) {
+        switch (this.appData.value.questions[answer.questionNumber].type) {
           case 'checkbox':
             data.response = [];
             answer.response?.map((item, index) =>
               item
                 ? data.response.push(
-                    this.appData.questions[answer.questionNumber].options[index]
-                      .title
+                    this.appData.value.questions[answer.questionNumber].options[
+                      index
+                    ].title
                   )
                 : null
             );
             break;
           case 'radio':
             console.log(answer.response);
-            data.response = this.appData.questions[
+            data.response = this.appData.value.questions[
               answer.questionNumber
             ].options[answer.response].title;
             break;
@@ -206,7 +213,7 @@ export class FormatService {
     });
     this._mainService.publishData({
       id: this.instance,
-      version: this.appData.version,
+      version: this.appData.value.version,
       data: finalData,
     });
     if (isLast) {

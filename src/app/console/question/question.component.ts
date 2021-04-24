@@ -20,6 +20,7 @@ export class QuestionComponent implements OnInit {
   @ViewChild('hiddenBtn', { static: false }) myHiddenBtn;
 
   public appData: AppData;
+  public formatId: string;
   public question: Question;
   public recordedAnswer: Answer;
   public questionNumber: number;
@@ -39,14 +40,19 @@ export class QuestionComponent implements OnInit {
     private _formatService: FormatService,
     private _fb: FormBuilder
   ) {
+    this._formatService.formatId.subscribe(
+      (formatId) => (this.formatId = formatId)
+    );
     this._route.queryParams.subscribe((params) => {
       if (!params['index']) {
-        this._router.navigate(['question'], { queryParams: { index: 0 } });
+        this._router.navigate(['research', this.formatId, 'question'], {
+          queryParams: { index: 0 },
+        });
       }
       this.questionForm ? this.questionForm.reset() : null;
       this.questionNumber = +params['index'];
       if (this.questionNumber - 1 > this._formatService.getLastQuestion()) {
-        this._router.navigate(['question'], {
+        this._router.navigate(['research', this.formatId, 'question'], {
           queryParams: { index: this.questionNumber - 1 },
         });
       }

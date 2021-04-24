@@ -10,6 +10,7 @@ import { FormatService } from 'src/app/shared/services';
 })
 export class StepperComponent implements OnInit {
   public appData: AppData;
+  public formatId: string;
   public filteredQuestions: Question[] = [];
   public dots = [];
   public currentIndex = 0;
@@ -24,7 +25,10 @@ export class StepperComponent implements OnInit {
         this.currentIndex = +params['index'];
       }
     });
-    this.appData = this._formatService.appData;
+    this._formatService.appData.subscribe((data) => (this.appData = data));
+    this._formatService.formatId.subscribe(
+      (formatId) => (this.formatId = formatId)
+    );
     this.dots = Array(this.appData.steps);
     this._formatService.filteredQuestions.subscribe(
       (questions) => (this.filteredQuestions = questions)
@@ -50,12 +54,14 @@ export class StepperComponent implements OnInit {
     let dotLength = this.dots.length;
     let ceil = Math.ceil(dotLength / 2);
     if (this.currentIndex + 1 > ceil) {
-      this._router.navigate(['question'], {
+      this._router.navigate(['research', this.formatId, 'question'], {
         queryParams: { index: this.currentIndex - ceil + index + 1 },
       });
       return;
     }
-    this._router.navigate(['question'], { queryParams: { index } });
+    this._router.navigate(['research', this.formatId, 'question'], {
+      queryParams: { index },
+    });
   }
 
   getLabel(index: number) {

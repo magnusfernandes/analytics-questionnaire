@@ -8,9 +8,14 @@ const routes: Routes = [
       import(`./success/success.module`).then((m) => m.SuccessModule),
   },
   {
-    path: '',
+    path: 'research/:formatId',
     loadChildren: () =>
       import(`./console/console.module`).then((m) => m.ConsoleModule),
+  },
+  {
+    path: '',
+    redirectTo: 'thank-you',
+    pathMatch: 'full',
   },
 ];
 

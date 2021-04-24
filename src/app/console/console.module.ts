@@ -25,7 +25,6 @@ const routes: Routes = [
       },
       {
         path: '',
-        pathMatch: 'full',
         component: IntroComponent,
       },
     ],
@@ -33,7 +32,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ConsoleComponent, IntroComponent, QuestionComponent, QuestionListComponent, StepperComponent],
+  declarations: [
+    ConsoleComponent,
+    IntroComponent,
+    QuestionComponent,
+    QuestionListComponent,
+    StepperComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

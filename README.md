@@ -14,6 +14,20 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Copy the `.pem` file to directory outside the root directory and run `npm run deploy:prod`
 
+```
+  - projects
+    - mypemfile.pem
+    - this-project-folder
+```
+
+## To add a new test
+
+Create a `JSON` file in `src/shared/data` and deploy again. The test will be hosted on `mr.analyticsstation.com/research/test-file-name`
+
+## To view submissions
+
+Visit `mr.analyticsstation.com/submissions/test-user-code?accessKey=your-access-key`. Replace `test-user-code` and `your-access-key`
+
 ## Question format
 
 ```json
@@ -82,6 +96,19 @@ Copy the `.pem` file to directory outside the root directory and run `npm run de
   "section": "B",
   "title": "Which is your favorite subject?",
   "type": "input"
+}
+```
+
+- Scale
+
+```json
+{
+  "section": "A",
+  "title": "How are you?",
+  "subTitle": "How are you?",
+  "type": "scale",
+  "items": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "labels": ["Poor", "Really Good"]
 }
 ```
 
